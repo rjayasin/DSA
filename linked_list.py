@@ -6,6 +6,9 @@ class Node:
 	def __str__(self):
 		return str(self.data)
 
+	def __lt__(self, other):
+		return self.data < other.data
+
 
 class LinkedList:
 	def __init__(self, head):
@@ -14,6 +17,7 @@ class LinkedList:
 		else:
 			h = Node(head)
 			self.head = h
+
 
 	@classmethod
 	def from_list(cls, elems):
@@ -25,6 +29,7 @@ class LinkedList:
 			ret.insertHead(add)
 		return ret
 
+
 	def __str__(self):
 		iterate = self.head
 		ret = ""
@@ -33,10 +38,20 @@ class LinkedList:
 			iterate = iterate.next
 		return ret
 
+
 	def insertHead(self, data):
 		new = Node(data)
 		new.next = self.head
 		self.head = new
+
+
+	def insertTail(self, data):
+		new = Node(data)
+		iterate = self.head
+		while iterate.next:
+			iterate = iterate.next
+		iterate.next = new
+
 
 	def search(self, data):
 		iterate = self.head
