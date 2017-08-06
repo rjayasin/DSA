@@ -33,7 +33,21 @@ class HashMap:
 	def resize(self):
 		# not sure how to handle copying over of keys as hashed index could change
 		# meaning old items could be lost
-		newKeys = [None for _ in range(self.size * 2)]
+
+		# simply double the size with empty space
+		self.keys.extend([[] for _ in range(self.size)])
+		self.values.extend([[] for _ in range(self.size)])
+		self.size *= 2
 
 
 hmap = HashMap(3)
+hmap.insert("hello", 1)
+hmap.insert("hell", 2)
+hmap.insert("hel", 3)
+print(hmap.keys)
+hmap.resize()
+print(hmap.keys)
+hmap.insert("hello", 1)
+hmap.insert("hell", 2)
+hmap.insert("hel", 3)
+print(hmap.keys)
