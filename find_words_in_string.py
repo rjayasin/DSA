@@ -19,9 +19,6 @@ def words_in_string(words, string, curr, ind, parsed):
 			if parsed:
 				ind -= len(curr)
 				curr = parsed.pop()
-				print("popped", curr)
-				print("parsed", parsed)
-				print("continue @", ind)
 			else:
 				print("no complete phrases")
 				return False
@@ -30,12 +27,26 @@ def words_in_string(words, string, curr, ind, parsed):
 			return True
 	elif curr in words:
 		parsed.append(curr)
-		print("added", curr)
 		curr = ""
 	words_in_string(words, string, curr, ind, parsed)
 
 
 a = ["tom", "tomorrow", "to", "row"]
 x = [] # list of found words
-words_in_string(a, "torowtomorrowtom", "", 0, x)
+# words_in_string(a, "torowtomorrowtom", "", 0, x)
+# print(x)
+
+def words_string(dictionary, string, words):
+	size = len(string)
+	if size == 0:
+		return True
+	for x in range(size):
+		word = string[:x + 1]
+		print(word)
+		if word in dictionary and words_string(dictionary, string[x + 1:], words):
+			return True
+	return False
+
+
+print(words_string(a, "torowtomorrowtom", x))
 print(x)
