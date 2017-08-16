@@ -16,9 +16,9 @@ def twenty_four(nums):
 		for op1 in operators:
 			for op2 in operators:
 				for op3 in operators:
-					result = a_op(a_op(a_op(nums[0], nums[1], op1), nums[2], op2), nums[3], op3)
+					result = a_op(a_op(a_op(perm[0], perm[1], op1), perm[2], op2), perm[3], op3)
 					if result == 24:
-						print(nums[0], op1, nums[1], op2, nums[2], op3, nums[3])
+						print(perm[0], op1, perm[1], op2, perm[2], op3, perm[3])
 						return True
 	return False
 
