@@ -10,6 +10,14 @@ def reverseStringRecursive(string, l, r):
 	else:
 		return string
 
-a = "123456789"
-b = reverseStringRecursive(a, 0, len(a) - 1)
+# keep taking characters off
+# add our first char to end of string
+def rev_string(string):
+	print(string)
+	if len(string) == 1:
+		return string
+	return rev_string(string[1:]) + string[0]
+
+a = "abcd"
+b = rev_string(a)
 print(b)
