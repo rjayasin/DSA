@@ -17,10 +17,8 @@ def wrapper(n):
 			return
 		elif n in infinite_coins.memo:
 			return infinite_coins.memo[n]
-		infinite_coins(n - 25, coins + [25])
-		infinite_coins(n - 10, coins + [10])
-		infinite_coins(n - 5,  coins + [5])
-		infinite_coins(n - 1,  coins + [1])
+		for coin in [25, 10, 5, 1]:
+			infinite_coins(n - coin, coins + [coin])
 	infinite_coins.counter = 0
 	infinite_coins.ways = []
 	infinite_coins.memo = {}
