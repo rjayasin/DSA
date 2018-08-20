@@ -1,3 +1,5 @@
+from collections import deque
+
 graph = {1 : [2, 3],
 		 2 : [1, 4],
 		 3 : [1, 5],
@@ -6,17 +8,19 @@ graph = {1 : [2, 3],
 		 6 : [5]}
 
 
-def bfs(start):
-	q = []
+def bfs(start, end):
+	q = deque()
 	visited = set()
-	q.append(start)
+	q.append((start, [start]))
 	visited.add(start)
 	while(q):
-		curr = q.pop(0)
+		curr = q.popleft()
 		print(curr)
-		for adj in graph.get(curr):
+		if curr[0] == end:
+			return curr[1]
+		for adj in graph.get(curr[0]):
 			if(adj not in visited):
-				q.append(adj)
+				q.append((adj, curr[1] + [adj]))
 				visited.add(adj) # mark current as visited
 
 
@@ -34,4 +38,7 @@ def dfs(node, dest, path, visited=set()):
 				path.pop()
 
 
-dfs(1, 6, [])
+if __name__ == '__main__':
+	# dfs(1, 6, [])
+	a = bfs(1, 6)
+	print(a)
