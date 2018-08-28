@@ -1,6 +1,5 @@
 # Topological sort
 from collections import deque
-import sys
 
 GRAPH = {
 	'A': {'C'},
@@ -32,4 +31,3 @@ def dfs(graph, node, visited, stack):
 if __name__ == '__main__':
 	a = topo_sort(GRAPH)
 	print(a)
-	print(sys.version)
