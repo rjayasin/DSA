@@ -13,12 +13,11 @@ GRAPH = {
 }
 
 def topo_sort(graph):
-	g = graph.copy()
 	stack = []
 	visited = set()
-	for node in g:
+	for node in graph:
 		if node not in visited:
-			dfs(g, node, visited, stack)
+			dfs(graph, node, visited, stack)
 	return list(reversed(stack))
 
 def dfs(graph, node, visited, stack):
